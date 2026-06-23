@@ -1,7 +1,13 @@
+import Navbar from './components/Navbar'
+import Hero from './components/Hero'
+import Houses from './components/Houses'
+
 function App() {
   return (
     <div>
-      <h1>⚡ Welcome to Hogwarts ⚡</h1>
+      <Navbar />
+      <Hero />
+      <Houses />
     </div>
   )
 }
