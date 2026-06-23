@@ -2,6 +2,7 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Houses from './components/Houses'
 import Characters from './components/Characters'
+import Quiz from './components/Quiz'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Hero />
       <Houses />
       <Characters />
+      <Quiz />
     </div>
   )
 }
