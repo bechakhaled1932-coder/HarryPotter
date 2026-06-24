@@ -1,3 +1,4 @@
+import { useState, useRef } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Houses from './components/Houses'
@@ -8,32 +9,48 @@ import Footer from './components/Footer'
 import SectionDivider from './components/SectionDivider'
 import MagicCursor from './components/MagicCursor'
 import MusicPlayer from './components/MusicPlayer'
+import Intro from './components/Intro'
 
 function App() {
+  const [entered, setEntered] = useState(false)
+  const musicRef = useRef(null)
+
+  const handleEnter = () => {
+    setEntered(true)
+    setTimeout(() => musicRef.current?.play(), 500)
+  }
+
   return (
     <div>
       <MagicCursor />
-      <MusicPlayer />
-      <Navbar />
-      <Hero />
+      <MusicPlayer ref={musicRef} />
 
-      <SectionDivider color="#0a0a0a" />
-      <Houses />
+      {!entered && <Intro onEnter={handleEnter} />}
 
-      <SectionDivider flipY color="#0d0d0d" />
-      <SectionDivider color="#0d0d0d" />
-      <Characters />
+      {entered && (
+        <>
+          <Navbar />
+          <Hero />
 
-      <SectionDivider flipY color="#0a0a0a" />
-      <SectionDivider color="#0a0a0a" />
-      <Spells />
+          <SectionDivider color="#0a0a0a" />
+          <Houses />
 
-      <SectionDivider flipY color="#0d0d0d" />
-      <SectionDivider color="#0d0d0d" />
-      <Quiz />
+          <SectionDivider flipY color="#0d0d0d" />
+          <SectionDivider color="#0d0d0d" />
+          <Characters />
 
-      <SectionDivider flipY color="#050505" />
-      <Footer />
+          <SectionDivider flipY color="#0a0a0a" />
+          <SectionDivider color="#0a0a0a" />
+          <Spells />
+
+          <SectionDivider flipY color="#0d0d0d" />
+          <SectionDivider color="#0d0d0d" />
+          <Quiz />
+
+          <SectionDivider flipY color="#050505" />
+          <Footer />
+        </>
+      )}
     </div>
   )
 }
