@@ -4,13 +4,13 @@ import { fadeUp, zoomIn } from '../hooks/useScrollReveal'
 
 const spellsData = [
   { id: 1, name: 'Expelliarmus', type: 'Charm', description: 'Disarms your opponent, forcing them to drop whatever they are holding.', color: '#c8102e', icon: '⚡', media: null },
-  { id: 2, name: 'Lumos', type: 'Charm', description: 'Creates a beam of light at the tip of the wand, illuminating dark places.', color: '#eeba30', icon: '💡', media: null },
-  { id: 3, name: 'Wingardium Leviosa', type: 'Charm', description: 'Levitates objects into the air with a swish and flick of the wand.', color: '#946b2d', icon: '🪄', media: null },
+  { id: 2, name: 'Lumos', type: 'Charm', description: 'Creates a beam of light at the tip of the wand, illuminating dark places.', color: '#eeba30', icon: '💡', media: '/sounds/Lumos Maxima1.mp4' },
+  { id: 3, name: 'Wingardium Leviosa', type: 'Charm', description: 'Levitates objects into the air with a swish and flick of the wand.', color: '#946b2d', icon: '🪄', media: '/sounds/Wingardium_Leviosa.mp4' },
   { id: 4, name: 'Avada Kedavra', type: 'Unforgivable', description: 'The Killing Curse. One of the three Unforgivable Curses, it causes instant death.', color: '#1a472a', icon: '💀', media: '/sounds/Voldemort - Avada Kedavra!.mp4' },
-  { id: 5, name: 'Patronus', type: 'Charm', description: 'Conjures a spirit guardian that protects against Dementors.', color: '#5e8cde', icon: '🦌', media: null },
-  { id: 6, name: 'Alohomora', type: 'Charm', description: 'Unlocks doors and windows that are not protected by magic.', color: '#ecb939', icon: '🔓', media: null },
+  { id: 5, name: 'Patronus', type: 'Charm', description: 'Conjures a spirit guardian that protects against Dementors.', color: '#5e8cde', icon: '🦌', media: '/sounds/Patronus.mp4' },
+  { id: 6, name: 'Alohomora', type: 'Charm', description: 'Unlocks doors and windows that are not protected by magic.', color: '#ecb939', icon: '🔓', media: '/sounds/Alohomora.mp4' },
   { id: 7, name: 'Crucio', type: 'Unforgivable', description: 'Inflicts intense pain on the victim. One of the three Unforgivable Curses.', color: '#740001', icon: '😱', media: null },
-  { id: 8, name: 'Accio', type: 'Charm', description: 'Summons objects to the caster from a distance.', color: '#0e1a40', icon: '🌀', media: null },
+  { id: 8, name: 'Accio', type: 'Charm', description: 'Summons objects to the caster from a distance.', color: '#0e1a40', icon: '🌀', media: '/sounds/Accio.mp4' },
 ]
 
 function VideoModal({ spell, onClose }) {

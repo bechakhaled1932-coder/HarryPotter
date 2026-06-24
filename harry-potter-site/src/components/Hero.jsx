@@ -21,13 +21,7 @@ function Hero() {
         Where magic begins...
       </motion.p>
 
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        className="hero-btn"
-      >
-        Enter Hogwarts
-      </motion.button>
+      
     </div>
   )
 }
