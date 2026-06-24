@@ -564,6 +564,7 @@ nav ul li a:hover {
 }
 
 /* ===== SPELLS ===== */
+/* ===== SPELLS ===== */
 .spells-section {
   padding: 6rem 3rem;
   background: #0d0d0d;
@@ -586,23 +587,24 @@ nav ul li a:hover {
 }
 
 .spell-card-wrapper {
-  perspective: 1000px;
   cursor: pointer;
   height: 220px;
+  perspective: 1000px;
 }
 
 .spell-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
+  transform-style: preserve-3d;
 }
 
 .spell-front,
 .spell-back {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   border: 1px solid;
   border-radius: 12px;
   display: flex;
@@ -621,12 +623,14 @@ nav ul li a:hover {
 .spell-icon {
   font-size: 2.5rem;
   margin-bottom: 0.8rem;
+  pointer-events: none;
 }
 
 .spell-name {
   font-size: 1rem;
   letter-spacing: 2px;
   margin-bottom: 0.5rem;
+  pointer-events: none;
 }
 
 .spell-type {
@@ -636,12 +640,14 @@ nav ul li a:hover {
   border-radius: 20px;
   letter-spacing: 1px;
   margin-bottom: 0.8rem;
+  pointer-events: none;
 }
 
 .spell-hint {
   font-size: 0.75rem;
   color: #666;
   font-style: italic;
+  pointer-events: none;
 }
 
 .spell-description {
@@ -649,6 +655,7 @@ nav ul li a:hover {
   color: #f0e6d3;
   line-height: 1.6;
   letter-spacing: 1px;
+  pointer-events: none;
 }
 
 /* ===== FOOTER ===== */

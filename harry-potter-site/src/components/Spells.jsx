@@ -17,9 +17,16 @@ function SpellCard({ spell }) {
   const [flipped, setFlipped] = useState(false)
 
   return (
-    <div className="spell-card-wrapper" onClick={() => setFlipped(!flipped)}>
-      <motion.div
-        key={spell.id} {...zoomIn} transition={{ ...zoomIn.transition, delay: spell.id * 0.08 }}
+    <div
+      className="spell-card-wrapper"
+      onClick={() => setFlipped(!flipped)}
+    >
+      <div
+        className="spell-card-inner"
+        style={{
+          transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+          transition: 'transform 0.6s ease',
+        }}
       >
         {/* Front */}
         <div className="spell-front" style={{ borderColor: spell.color }}>
@@ -30,11 +37,17 @@ function SpellCard({ spell }) {
         </div>
 
         {/* Back */}
-        <div className="spell-back" style={{ borderColor: spell.color, background: `linear-gradient(135deg, ${spell.color}33, #0a0a0a)` }}>
+        <div
+          className="spell-back"
+          style={{
+            borderColor: spell.color,
+            background: `linear-gradient(135deg, ${spell.color}33, #0a0a0a)`,
+          }}
+        >
           <h3 className="spell-name" style={{ color: spell.color }}>{spell.name}</h3>
           <p className="spell-description">{spell.description}</p>
         </div>
-      </motion.div>
+      </div>
     </div>
   )
 }
