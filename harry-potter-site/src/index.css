@@ -7,9 +7,10 @@
 }
 
 body {
-  background-color: #0a0a0a;
-  color: #f0e6d3;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   font-family: 'Cinzel', serif;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 /* ===== NAVBAR ===== */
@@ -735,4 +736,227 @@ nav ul li a:hover {
   .navbar {
     padding: 1rem 1.5rem;
   }
+}
+
+/* ===== THEME VARIABLES ===== */
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #0d0d0d;
+  --bg-card: linear-gradient(135deg, #1a1a2e, #0a0a0a);
+  --text-primary: #f0e6d3;
+  --text-secondary: #aaaaaa;
+  --border-color: #c9a84c44;
+  --gold: #c9a84c;
+}
+
+[data-theme='light'] {
+  --bg-primary: #f5f0e8;
+  --bg-secondary: #ede8dc;
+  --bg-card: linear-gradient(135deg, #fff8ee, #f5f0e8);
+  --text-primary: #2a1a00;
+  --text-secondary: #6b5a3e;
+  --border-color: #c9a84c88;
+  --gold: #a67c00;
+}
+
+.navbar {
+  background: rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid var(--border-color);
+}
+
+[data-theme='light'] .navbar {
+  background: rgba(245, 240, 232, 0.85);
+}
+
+[data-theme='light'] .navbar.scrolled {
+  background: rgba(245, 240, 232, 0.98);
+}
+
+.navbar-logo { color: var(--gold); }
+.navbar-links li a { color: var(--text-primary); }
+.navbar-links li a:hover { color: var(--gold); }
+
+.section-title {
+  color: var(--gold);
+  text-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
+}
+
+.houses-section { background: var(--bg-primary); }
+.characters-section { background: var(--bg-secondary); }
+.spells-section { background: var(--bg-secondary); }
+.quiz-section { background: var(--bg-primary); }
+
+.house-card,
+.character-card,
+.spell-front,
+.quiz-card,
+.char-modal {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+}
+
+.house-name,
+.character-name,
+.spell-name,
+.char-modal-name { color: var(--gold); }
+
+.house-trait,
+.character-role,
+.spell-description,
+.card-description { color: var(--text-secondary); }
+
+.footer {
+  background: var(--bg-secondary);
+  border-top: 2px solid var(--border-color);
+}
+
+.footer-logo { color: var(--gold); }
+.footer-quote,
+.footer-author,
+.footer-links a { color: var(--text-secondary); }
+
+/* ===== SPELL BUTTON ===== */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.spell-btn {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+}
+
+.spell-btn:hover {
+  background: var(--gold);
+  color: #0a0a0a;
+}
+
+/* ===== SPELL FLASH ===== */
+.spell-flash {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  pointer-events: none;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.05);
+  letter-spacing: 5px;
+  color: var(--gold);
+}
+
+
+/* ===== TYPOGRAPHY ADAPTIVE ===== */
+.hero-title {
+  color: var(--gold);
+}
+
+.hero-subtitle {
+  color: var(--text-primary);
+}
+
+.house-founder {
+  color: var(--text-secondary);
+}
+
+.house-tagline {
+  color: var(--text-secondary);
+}
+
+.character-house,
+.char-modal-house {
+  color: var(--gold);
+  border-color: var(--border-color);
+}
+
+.char-modal-role {
+  color: var(--text-secondary);
+}
+
+.char-modal-desc {
+  color: var(--text-primary);
+}
+
+.spell-hint {
+  color: var(--text-secondary);
+}
+
+.spells-subtitle {
+  color: var(--text-secondary);
+}
+
+.quiz-question {
+  color: var(--text-primary);
+}
+
+.quiz-option {
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.quiz-option:hover {
+  border-color: var(--gold);
+  background: var(--border-color);
+}
+
+.result-label,
+.result-tagline {
+  color: var(--text-secondary);
+}
+
+.footer-copy {
+  color: var(--text-secondary);
+}
+
+.carousel-btn {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.carousel-btn:hover {
+  background: var(--gold);
+  color: var(--bg-primary);
+}
+
+.dot {
+  border-color: var(--gold);
+}
+
+.dot.active {
+  background: var(--gold);
+}
+
+[data-theme='light'] .hero {
+  background: url('/Hogwarts_1.jpg') center center / cover no-repeat;
+}
+
+[data-theme='light'] .hero::before {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme='light'] .char-modal {
+  background: linear-gradient(135deg, #fff8ee, #f5f0e8);
+}
+
+[data-theme='light'] .quiz-card {
+  background: linear-gradient(135deg, #fff8ee, #f5f0e8);
+}
+
+[data-theme='light'] .spell-front,
+[data-theme='light'] .spell-back {
+  background: linear-gradient(135deg, #fff8ee, #f5f0e8);
+}
+
+[data-theme='light'] .character-card {
+  background: linear-gradient(135deg, #fff8ee, #f5f0e8);
 }

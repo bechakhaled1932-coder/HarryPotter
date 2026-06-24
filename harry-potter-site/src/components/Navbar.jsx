@@ -1,15 +1,25 @@
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useTheme } from '../context/ThemeContext'
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [showSpell, setShowSpell] = useState(false)
+  const { theme, toggleTheme } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const castSpell = () => {
+    const next = theme === 'dark' ? 'light' : 'dark'
+    toggleTheme(next)
+    setShowSpell(true)
+    setTimeout(() => setShowSpell(false), 1500)
+  }
 
   return (
     <motion.nav
@@ -30,9 +40,35 @@ function Navbar() {
         ))}
       </ul>
 
-      <button className="burger" onClick={() => setMenuOpen(!menuOpen)}>
-        {menuOpen ? '✕' : '☰'}
-      </button>
+      <div className="navbar-right">
+        <motion.button
+          className="spell-btn"
+          onClick={castSpell}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          {theme === 'dark' ? '☀️ Lumos' : '🌑 Nox'}
+        </motion.button>
+
+        <button className="burger" onClick={() => setMenuOpen(!menuOpen)}>
+          {menuOpen ? '✕' : '☰'}
+        </button>
+      </div>
+
+      {/* Spell flash animation */}
+      <AnimatePresence>
+        {showSpell && (
+          <motion.div
+            className="spell-flash"
+            initial={{ opacity: 0.8 }}
+            animate={{ opacity: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2 }}
+          >
+            {theme === 'light' ? '✨ Lumos!' : '🌑 Nox!'}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   )
 }
