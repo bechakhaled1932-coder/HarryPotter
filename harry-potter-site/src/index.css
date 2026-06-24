@@ -1152,3 +1152,13 @@ section {
   box-shadow: 0 0 30px rgba(201, 168, 76, 0.6);
   text-shadow: none;
 }
+
+/* ===== SMOOTH SCROLL ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== CURSOR VISIBLE ON INTRO ===== */
+.intro-screen {
+  cursor: auto;
+}

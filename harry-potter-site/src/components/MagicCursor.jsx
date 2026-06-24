@@ -66,9 +66,23 @@ export default function MagicCursor() {
 
   // Hide default cursor
   useEffect(() => {
+  const intro = document.querySelector('.intro-screen')
+  if (!intro) {
     document.body.style.cursor = 'none'
-    return () => { document.body.style.cursor = 'auto' }
-  }, [])
+  }
+
+  const observer = new MutationObserver(() => {
+    const introExists = document.querySelector('.intro-screen')
+    document.body.style.cursor = introExists ? 'auto' : 'none'
+  })
+
+  observer.observe(document.body, { childList: true, subtree: true })
+
+  return () => {
+    observer.disconnect()
+    document.body.style.cursor = 'auto'
+  }
+}, [])
 
   // Track mouse movement
   useEffect(() => {
