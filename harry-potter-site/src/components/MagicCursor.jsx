@@ -166,7 +166,7 @@ export default function MagicCursor() {
         <svg
           width="36"
           height="10"
-          viewBox="0 0 36 10"
+          viewBox="0 0 36 10"cd
           style={{ transform: 'rotate(135deg)', transformOrigin: '0 0' }}
         >
           {/* Handle */}

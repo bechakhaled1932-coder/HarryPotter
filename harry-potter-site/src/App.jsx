@@ -6,10 +6,14 @@ import Spells from './components/Spells'
 import Quiz from './components/Quiz'
 import Footer from './components/Footer'
 import SectionDivider from './components/SectionDivider'
+import MagicCursor from './components/MagicCursor'
+import MusicPlayer from './components/MusicPlayer'
 
 function App() {
   return (
     <div>
+      <MagicCursor />
+      <MusicPlayer />
       <Navbar />
       <Hero />
 
