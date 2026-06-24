@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import { fadeUp, zoomIn } from '../hooks/useScrollReveal'
 
 const spellsData = [
   { id: 1, name: 'Expelliarmus', type: 'Charm', description: 'Disarms your opponent, forcing them to drop whatever they are holding.', color: '#c8102e', icon: '⚡' },
@@ -18,10 +19,7 @@ function SpellCard({ spell }) {
   return (
     <div className="spell-card-wrapper" onClick={() => setFlipped(!flipped)}>
       <motion.div
-        className="spell-card-inner"
-        animate={{ rotateY: flipped ? 180 : 0 }}
-        transition={{ duration: 0.6 }}
-        style={{ transformStyle: 'preserve-3d' }}
+        key={spell.id} {...zoomIn} transition={{ ...zoomIn.transition, delay: spell.id * 0.08 }}
       >
         {/* Front */}
         <div className="spell-front" style={{ borderColor: spell.color }}>
@@ -44,24 +42,14 @@ function SpellCard({ spell }) {
 function Spells() {
   return (
     <section id="spells" className="spells-section">
-      <motion.h2
-        className="section-title"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        viewport={{ once: true }}
-      >
-        Spells & Magic
-      </motion.h2>
+      <motion.h2 className="section-title" {...fadeUp}>
+  Spells & Magic
+</motion.h2>
       <p className="spells-subtitle">Click on a card to reveal the spell</p>
       <div className="spells-grid">
         {spellsData.map((spell) => (
           <motion.div
-            key={spell.id}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: spell.id * 0.1 }}
-            viewport={{ once: true }}
+            key={spell.id} {...zoomIn} transition={{ ...zoomIn.transition, delay: spell.id * 0.08 }}
           >
             <SpellCard spell={spell} />
           </motion.div>

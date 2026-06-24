@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
+import { fadeUp } from '../hooks/useScrollReveal'
 
 const charactersData = [
   {
@@ -145,15 +146,9 @@ function Characters() {
 
   return (
     <section id="characters" className="characters-section">
-      <motion.h2
-        className="section-title"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        viewport={{ once: true }}
-      >
-        Characters
-      </motion.h2>
+      <motion.h2 className="section-title" {...fadeUp}>
+  Characters
+</motion.h2>
 
       <div className="characters-grid">
         {charactersData.map((character) => (

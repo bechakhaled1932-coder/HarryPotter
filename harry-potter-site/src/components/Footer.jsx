@@ -1,13 +1,9 @@
 import { motion } from 'framer-motion'
+import { fadeUp } from '../hooks/useScrollReveal'
 
 function Footer() {
   return (
-    <motion.footer
-      className="footer"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-      viewport={{ once: true }}
+    <motion.footer className="footer" {...fadeUp}
     >
       <h2 className="footer-logo">⚡ Hogwarts</h2>
       <p className="footer-quote">"It does not do to dwell on dreams and forget to live."</p>

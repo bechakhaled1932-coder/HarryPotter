@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { HOUSES } from '../data/houses'
+import { fadeUp } from '../hooks/useScrollReveal'
 
 const questions = [
   {
@@ -88,15 +89,9 @@ function Quiz() {
 
   return (
     <section id="quiz" className="quiz-section">
-      <motion.h2
-        className="section-title"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        viewport={{ once: true }}
-      >
-        Find Your House
-      </motion.h2>
+      <motion.h2 className="section-title" {...fadeUp}>
+  Find Your House
+</motion.h2>
 
       <AnimatePresence mode="wait">
         {!result ? (

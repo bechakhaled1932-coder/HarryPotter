@@ -1,6 +1,8 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 import { HOUSES, HOUSE_IDS } from '../data/houses'
+import { fadeUp, fadeLeft, fadeRight } from '../hooks/useScrollReveal'
+
 
 function Houses() {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -21,15 +23,9 @@ function Houses() {
 
   return (
     <section id="houses" className="houses-section">
-      <motion.h2
-        className="section-title"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        viewport={{ once: true }}
-      >
-        The Four Houses
-      </motion.h2>
+      <motion.h2 className="section-title" {...fadeUp}>
+  The Four Houses
+</motion.h2>
 
       <div className="carousel-container">
         <button className="carousel-btn" onClick={goPrev}>‹</button>
