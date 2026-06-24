@@ -184,8 +184,8 @@ nav ul li a:hover {
 
 .characters-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -197,16 +197,17 @@ nav ul li a:hover {
   padding: 1.5rem 1rem;
   text-align: center;
   cursor: pointer;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .character-card:hover {
   border-color: #c9a84c;
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.15);
 }
 
 .character-img {
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
   object-fit: cover;
   border-radius: 50%;
   border: 2px solid #c9a84c44;
@@ -219,34 +220,34 @@ nav ul li a:hover {
 }
 
 .character-name {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: #c9a84c;
   letter-spacing: 1px;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
 }
 
 .character-role {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: #aaa;
   font-style: italic;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.7rem;
 }
 
 .character-house {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: #f0e6d3;
   border: 1px solid #c9a84c44;
-  padding: 0.2rem 0.7rem;
+  padding: 0.2rem 0.6rem;
   border-radius: 20px;
   letter-spacing: 1px;
 }
 
-/* ===== MODAL ===== */
-.modal-overlay {
+/* ===== CHARACTER MODAL ===== */
+.char-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(8px);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -254,27 +255,23 @@ nav ul li a:hover {
   padding: 2rem;
 }
 
-.modal-card {
-  background: linear-gradient(135deg, #1a1a2e, #0a0a0a);
+.char-modal {
+  background: linear-gradient(135deg, #12122a, #0a0a0a);
   border: 2px solid #c9a84c;
   border-radius: 16px;
   padding: 2.5rem;
-  max-width: 500px;
+  max-width: 700px;
   width: 100%;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  box-shadow: 0 0 40px rgba(201, 168, 76, 0.3);
+  box-shadow: 0 0 50px rgba(201, 168, 76, 0.25);
 }
 
-.modal-close {
+.char-close {
   position: absolute;
   top: 1rem;
   right: 1rem;
   background: transparent;
-  border: 1px solid #c9a84c44;
+  border: 1px solid #c9a84c66;
   color: #c9a84c;
   font-size: 1rem;
   width: 32px;
@@ -282,54 +279,94 @@ nav ul li a:hover {
   border-radius: 50%;
   cursor: pointer;
   transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.modal-close:hover {
+.char-close:hover {
   background: #c9a84c;
   color: #0a0a0a;
 }
 
-.modal-image {
-  width: 140px;
-  height: 140px;
+.char-modal-inner {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.char-modal-avatar {
+  width: 180px;
+  height: 220px;
   object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid #c9a84c;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 0 25px rgba(201, 168, 76, 0.4);
+  border-radius: 10px;
+  border: 2px solid #c9a84c;
+  flex-shrink: 0;
+  box-shadow: 0 0 25px rgba(201, 168, 76, 0.3);
 }
 
-.modal-name {
-  font-size: 1.5rem;
+.char-modal-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.char-modal-house {
+  font-size: 0.75rem;
   color: #c9a84c;
-  letter-spacing: 3px;
-  margin-bottom: 0.4rem;
+  border: 1px solid #c9a84c;
+  padding: 0.2rem 0.8rem;
+  border-radius: 20px;
+  letter-spacing: 2px;
+  display: inline-block;
+  width: fit-content;
 }
 
-.modal-role {
+.char-modal-name {
+  font-size: 1.8rem;
+  color: #f0e6d3;
+  letter-spacing: 3px;
+  margin-top: 0.3rem;
+}
+
+.char-modal-role {
   font-size: 0.9rem;
   color: #aaa;
   font-style: italic;
-  margin-bottom: 0.8rem;
 }
 
-.modal-house {
-  font-size: 0.8rem;
-  border: 1px solid #c9a84c;
-  color: #c9a84c;
-  padding: 0.3rem 1rem;
-  border-radius: 20px;
-  letter-spacing: 2px;
-  margin-bottom: 1.5rem;
-  display: inline-block;
+.char-modal-divider {
+  width: 60px;
+  height: 2px;
+  background: #c9a84c;
+  margin: 0.5rem 0;
 }
 
-.modal-description {
-  font-size: 0.9rem;
-  color: #f0e6d3;
+.char-modal-desc {
+  font-size: 0.88rem;
+  color: #ccc;
   line-height: 1.8;
-  letter-spacing: 0.5px;
   font-family: Georgia, serif;
+}
+
+@media (max-width: 600px) {
+  .char-modal-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .char-modal-avatar {
+    width: 120px;
+    height: 150px;
+  }
+
+  .char-modal-house {
+    margin: 0 auto;
+  }
+
+  .char-modal-divider {
+    margin: 0.5rem auto;
+  }
 }
 
 
