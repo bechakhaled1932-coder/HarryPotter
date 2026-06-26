@@ -33,7 +33,7 @@ const charactersData = [
   {
     id: 4,
     name: 'Draco Malfoy',
-    role: 'The Rival',
+    role: 'The Rival + l crush dyel aRwa',
     house: 'Slytherin',
     visage: '/visages/draco.png',
     avatar: '/characters/Draco.png',
