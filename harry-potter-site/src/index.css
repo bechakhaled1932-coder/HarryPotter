@@ -1299,3 +1299,230 @@ html {
   .movies-scroll { padding: 1rem 2.5rem; }
   .movie-overlay { opacity: 1; background: rgba(0,0,0,0.6); }
 }
+
+
+
+/* ===== SERIES ===== */
+.series-section {
+  padding: 6rem 3rem;
+  background: radial-gradient(ellipse at center, #1a0a2e 0%, #0a0a0a 70%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
+}
+
+.series-intro {
+  text-align: center;
+  max-width: 750px;
+}
+
+.series-eyebrow {
+  font-size: 0.85rem;
+  color: var(--gold);
+  letter-spacing: 5px;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.series-title {
+  font-size: 3rem;
+  color: var(--gold);
+  letter-spacing: 5px;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 30px rgba(201, 168, 76, 0.5);
+}
+
+.series-text {
+  font-size: 1rem;
+  color: var(--text-primary);
+  line-height: 1.9;
+  font-family: Georgia, serif;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+.series-text strong {
+  color: var(--gold);
+  font-style: normal;
+}
+
+/* Countdown */
+.countdown-wrapper {
+  text-align: center;
+}
+
+.countdown-title {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  letter-spacing: 4px;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.countdown-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.countdown-box {
+  background: linear-gradient(135deg, #1a1a2e, #0a0a0a);
+  border: 2px solid var(--gold);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 90px;
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.15);
+}
+
+.countdown-value {
+  font-size: 2.5rem;
+  color: var(--gold);
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.countdown-label {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  letter-spacing: 3px;
+}
+
+.countdown-sep {
+  font-size: 2.5rem;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  opacity: 0.6;
+}
+
+.countdown-date {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  letter-spacing: 4px;
+  font-style: italic;
+}
+
+/* Trailer */
+.trailer-wrapper {
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+}
+
+.trailer-label {
+  font-size: 0.85rem;
+  color: var(--gold);
+  letter-spacing: 5px;
+  margin-bottom: 1.5rem;
+}
+
+.trailer-thumbnail {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid var(--border-color);
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.trailer-thumbnail:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 30px rgba(201, 168, 76, 0.3);
+}
+
+.trailer-preview {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+.trailer-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  transition: background 0.3s;
+}
+
+.trailer-thumbnail:hover .trailer-overlay {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.trailer-play-btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(201, 168, 76, 0.9);
+  color: #0a0a0a;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 6px;
+  cursor: pointer;
+}
+
+.trailer-play-label {
+  font-size: 0.85rem;
+  color: #f0e6d3;
+  letter-spacing: 3px;
+}
+
+.trailer-video-wrapper {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 40px rgba(201, 168, 76, 0.3);
+}
+
+.trailer-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  transition: all 0.3s;
+}
+
+.trailer-close:hover {
+  background: var(--gold);
+  color: #0a0a0a;
+}
+
+.trailer-video {
+  width: 100%;
+  max-height: 450px;
+  display: block;
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .series-section { padding: 4rem 1.5rem; gap: 3rem; }
+  .series-title { font-size: 2rem; }
+  .countdown-box { padding: 1rem 1.2rem; min-width: 65px; }
+  .countdown-value { font-size: 1.8rem; }
+  .countdown-grid { gap: 0.5rem; }
+  .trailer-preview { height: 220px; }
+  .trailer-play-btn { width: 60px; height: 60px; font-size: 1.5rem; }
+  .trailer-video { max-height: 250px; }
+}

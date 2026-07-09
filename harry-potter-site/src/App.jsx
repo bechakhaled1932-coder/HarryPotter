@@ -11,6 +11,7 @@ import MagicCursor from './components/MagicCursor'
 import MusicPlayer from './components/MusicPlayer'
 import Intro from './components/Intro'
 import Movies from './components/Movies'
+import Series from './components/Series'
 
 
 function App() {
@@ -48,6 +49,10 @@ function App() {
           <SectionDivider flipY color="#0d0d0d" />
           <SectionDivider color="#0d0d0d" />
           <Movies />
+
+          <SectionDivider flipY color="#0a0a0a" />
+          <SectionDivider color="#0a0a0a" />
+          <Series />
 
           <SectionDivider flipY color="#0d0d0d" />
           <SectionDivider color="#0d0d0d" />
