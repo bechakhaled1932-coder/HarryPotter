@@ -10,6 +10,8 @@ import SectionDivider from './components/SectionDivider'
 import MagicCursor from './components/MagicCursor'
 import MusicPlayer from './components/MusicPlayer'
 import Intro from './components/Intro'
+import Movies from './components/Movies'
+
 
 function App() {
   const [entered, setEntered] = useState(false)
@@ -42,6 +44,10 @@ function App() {
           <SectionDivider flipY color="#0a0a0a" />
           <SectionDivider color="#0a0a0a" />
           <Spells />
+
+          <SectionDivider flipY color="#0d0d0d" />
+          <SectionDivider color="#0d0d0d" />
+          <Movies />
 
           <SectionDivider flipY color="#0d0d0d" />
           <SectionDivider color="#0d0d0d" />
