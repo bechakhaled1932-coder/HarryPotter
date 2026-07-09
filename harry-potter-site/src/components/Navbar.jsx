@@ -31,7 +31,7 @@ function Navbar() {
       <h1 className="navbar-logo">⚡ Hogwarts</h1>
 
       <ul className={`navbar-links ${menuOpen ? 'open' : ''}`}>
-        {['houses', 'characters', 'movies', 'series', 'spells', 'quiz'].map((item) => (
+        {['houses', 'characters', 'spells', 'movies', 'series','quiz'].map((item) => (
           <li key={item}>
             <a href={`#${item}`} onClick={() => setMenuOpen(false)}>
               {item.charAt(0).toUpperCase() + item.slice(1)}
