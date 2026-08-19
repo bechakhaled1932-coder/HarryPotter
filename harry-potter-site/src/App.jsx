@@ -59,8 +59,8 @@ function App() {
           <SectionDivider color="#0d0d0d" />
           <Quiz />
 
-          <SectionDivider flipY color="#0a0a0a" />
-          <SectionDivider color="#0a0a0a" />
+          <SectionDivider flipY color="#0d0d0d" />
+          <SectionDivider color="#0d0d0d" />
           <GamesSection />
 
           <SectionDivider flipY color="#050505" />
