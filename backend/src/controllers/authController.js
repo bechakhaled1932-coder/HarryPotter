@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import User from '../models/User.js'
+import { sendWelcomeEmail } from '../utils/mailer.js'
 
 const generateToken = (id) =>
   jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '7d' })
@@ -13,6 +14,9 @@ export const register = async (req, res) => {
 
     const hashed = await bcrypt.hash(password, 10)
     const user = await User.create({ username, email, password: hashed })
+
+    // Send welcome email (doesn't block the response if it fails)
+    sendWelcomeEmail(user)
 
     res.status(201).json({
       token: generateToken(user._id),

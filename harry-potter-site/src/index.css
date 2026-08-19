@@ -1527,3 +1527,9 @@ html {
   .trailer-play-btn { width: 60px; height: 60px; font-size: 1.5rem; }
   .trailer-video { max-height: 250px; }
 }
+
+.quiz-save-status {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin: 12px 0;
+}

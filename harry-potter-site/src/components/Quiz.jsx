@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { HOUSES } from '../data/houses'
 import { fadeUp } from '../hooks/useScrollReveal'
+import { useAuth } from '../context/AuthContext'
+import { updateHouse } from '../api/auth'
 
 const questions = [
   {
@@ -59,21 +61,38 @@ const questions = [
 function Quiz() {
   const [current, setCurrent] = useState(0)
   const [scores, setScores] = useState({ gryffindor: 0, slytherin: 0, ravenclaw: 0, hufflepuff: 0 })
+  const [answers, setAnswers] = useState([])
   const [result, setResult] = useState(null)
   const [selected, setSelected] = useState(null)
+  const [saveStatus, setSaveStatus] = useState('idle') // idle | saving | saved | error
+
+  const { user, refreshUser } = useAuth()
 
   const handleAnswer = (house) => {
     setSelected(house)
     const newScores = { ...scores, [house]: scores[house] + 1 }
+    const newAnswers = [...answers, house]
     setScores(newScores)
+    setAnswers(newAnswers)
 
-    setTimeout(() => {
+    setTimeout(async () => {
       if (current + 1 < questions.length) {
         setCurrent(current + 1)
         setSelected(null)
       } else {
         const winner = Object.entries(newScores).reduce((a, b) => a[1] > b[1] ? a : b)[0]
         setResult(winner)
+
+        if (user) {
+          setSaveStatus('saving')
+          try {
+            const updatedUser = await updateHouse(winner, newAnswers)
+            refreshUser(updatedUser)
+            setSaveStatus('saved')
+          } catch {
+            setSaveStatus('error')
+          }
+        }
       }
     }, 600)
   }
@@ -81,8 +100,10 @@ function Quiz() {
   const reset = () => {
     setCurrent(0)
     setScores({ gryffindor: 0, slytherin: 0, ravenclaw: 0, hufflepuff: 0 })
+    setAnswers([])
     setResult(null)
     setSelected(null)
+    setSaveStatus('idle')
   }
 
   const house = result ? HOUSES[result] : null
@@ -142,6 +163,19 @@ function Quiz() {
             <img src={house.logo} alt={house.name} className="result-logo" />
             <h2 className="result-house" style={{ color: house.accent2 }}>{house.name}</h2>
             <p className="result-tagline">"{house.tagline}"</p>
+
+            {user ? (
+              <p className="quiz-save-status">
+                {saveStatus === 'saving' && '💾 Saving to your account...'}
+                {saveStatus === 'saved' && '✅ Saved to your account!'}
+                {saveStatus === 'error' && '⚠️ Could not save, please try again later.'}
+              </p>
+            ) : (
+              <p className="quiz-save-status">
+                🔒 Log in to save your house to your account
+              </p>
+            )}
+
             <motion.button
               className="quiz-reset"
               whileHover={{ scale: 1.05 }}
