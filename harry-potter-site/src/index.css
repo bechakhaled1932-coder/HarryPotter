@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&family=Cinzel:wght@400;700;900&display=swap');
 @import './Auth-styles.css';
+@import './games-styles.css';
 
 * {
   margin: 0;
