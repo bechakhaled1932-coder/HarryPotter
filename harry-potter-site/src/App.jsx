@@ -5,6 +5,7 @@ import Houses from './components/Houses'
 import Characters from './components/Characters'
 import Spells from './components/Spells'
 import Quiz from './components/Quiz'
+import GamesSection from './components/GamesSection'
 import Footer from './components/Footer'
 import SectionDivider from './components/SectionDivider'
 import MagicCursor from './components/MagicCursor'
@@ -57,6 +58,10 @@ function App() {
           <SectionDivider flipY color="#0d0d0d" />
           <SectionDivider color="#0d0d0d" />
           <Quiz />
+
+          <SectionDivider flipY color="#0a0a0a" />
+          <SectionDivider color="#0a0a0a" />
+          <GamesSection />
 
           <SectionDivider flipY color="#050505" />
           <Footer />
