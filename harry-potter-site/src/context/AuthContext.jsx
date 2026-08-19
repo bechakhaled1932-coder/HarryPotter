@@ -1,7 +1,23 @@
 import { createContext, useContext, useState, useEffect } from 'react'
+import emailjs from '@emailjs/browser'
 import { registerUser, loginUser, getProfile } from '../api/auth.js'
 
 const AuthContext = createContext(null)
+
+const EMAILJS_SERVICE_ID = 'service_fmp3nga'
+const EMAILJS_TEMPLATE_ID = 'template_vkwhad6'
+const EMAILJS_PUBLIC_KEY = '1Zq4Hy5tP1oExuZYD'
+
+function sendWelcomeEmail(username, email) {
+  emailjs
+    .send(
+      EMAILJS_SERVICE_ID,
+      EMAILJS_TEMPLATE_ID,
+      { username, to_email: email },
+      { publicKey: EMAILJS_PUBLIC_KEY }
+    )
+    .catch((err) => console.error('❌ Failed to send welcome email:', err))
+}
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
@@ -36,6 +52,7 @@ export function AuthProvider({ children }) {
       localStorage.setItem('hp_token', data.token)
       setToken(data.token)
       setUser(data.user)
+      sendWelcomeEmail(data.user.username, data.user.email)
       return true
     } catch (err) {
       setAuthError(err.message)
