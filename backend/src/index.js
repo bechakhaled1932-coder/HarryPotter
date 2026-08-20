@@ -9,11 +9,19 @@ dotenv.config()
 
 const app = express()
 
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://harry-potter-three-tan.vercel.app',
+]
+
 app.use(cors({
-  origin: [
-    'http://localhost:5173',
-    'https://harry-potter-three-tan.vercel.app',
-  ],
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true)
+    const isAllowed =
+      allowedOrigins.includes(origin) ||
+      /^https:\/\/harry-potter-[a-z0-9-]+\.vercel\.app$/.test(origin)
+    callback(isAllowed ? null : new Error('Not allowed by CORS'), isAllowed)
+  },
 }))
 app.use(express.json())
 
