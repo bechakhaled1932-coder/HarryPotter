@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import WandShop from './components/WandShop'
 import Houses from './components/Houses'
 import Characters from './components/Characters'
 import Spells from './components/Spells'
@@ -36,6 +37,10 @@ function App() {
           <Navbar />
           <Hero />
 
+          <SectionDivider color="#0d0d0d" />
+          <WandShop />
+
+          <SectionDivider flipY color="#0a0a0a" />
           <SectionDivider color="#0a0a0a" />
           <Houses />
 

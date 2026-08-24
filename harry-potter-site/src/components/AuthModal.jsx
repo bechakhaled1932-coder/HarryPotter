@@ -25,6 +25,7 @@ function AuthModal({ open, onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setSubmitting(true)
+    const wasRegister = mode === 'register'
     const success =
       mode === 'login'
         ? await login(email, password)
@@ -34,6 +35,11 @@ function AuthModal({ open, onClose }) {
     if (success) {
       resetFields()
       onClose()
+      if (wasRegister) {
+        setTimeout(() => {
+          document.getElementById('wand-shop')?.scrollIntoView({ behavior: 'smooth' })
+        }, 400)
+      }
     }
   }
 

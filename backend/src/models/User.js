@@ -12,6 +12,12 @@ const userSchema = new mongoose.Schema({
     house: String,
     answers: [String],
   }],
+  wand: {
+    core: { type: String, default: null },
+    wood: { type: String, default: null },
+    length: { type: String, default: null },
+    flexibility: { type: String, default: null },
+  },
   createdAt: { type: Date, default: Date.now },
 })
 

@@ -26,6 +26,20 @@ export const updateHouse = async (req, res) => {
   }
 }
 
+export const updateWand = async (req, res) => {
+  try {
+    const { core, wood, length, flexibility } = req.body
+    const user = await User.findByIdAndUpdate(
+      req.userId,
+      { wand: { core, wood, length, flexibility } },
+      { new: true }
+    ).select('-password')
+    res.json(user)
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+}
+
 export const toggleFavoriteSpell = async (req, res) => {
   try {
     const { spell } = req.body

@@ -47,6 +47,13 @@ export const updateHouse = (house, answers) =>
     body: JSON.stringify({ house, answers }),
   })
 
+export const updateWand = (wand) =>
+  request('/user/wand', {
+    method: 'PUT',
+    headers: authHeaders(),
+    body: JSON.stringify(wand),
+  })
+
 export const toggleFavoriteSpell = (spell) =>
   request('/user/spells/favorite', {
     method: 'PUT',
